@@ -29,17 +29,6 @@
 @synthesize nameLabel;
 @synthesize profilePhotoImageView;
 
-- (void)dealloc {
-    [permissions release];
-    [backgroundImageView release];
-    [loginButton release];
-    [menuTableView release];
-    [mainMenuItems release];
-    [headerView release];
-    [nameLabel release];
-    [profilePhotoImageView release];
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -140,7 +129,6 @@
                                           initWithIndex:[sender tag]];
     pendingApiCallsController = controller;
     [self.navigationController pushViewController:controller animated:YES];
-    [controller release];
 }
 
 #pragma mark - View lifecycle
@@ -150,7 +138,6 @@
                                                   mainScreen].applicationFrame];
     [view setBackgroundColor:[UIColor whiteColor]];
     self.view = view;
-    [view release];
     
     // Initialize permissions
     permissions = [[NSArray alloc] initWithObjects:@"offline_access", nil];
@@ -169,10 +156,10 @@
     self.navigationItem.title = @"Hackbook for iOS";
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@"Back"
+    [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
     
     // Background Image
     backgroundImageView = [[UIImageView alloc]
@@ -184,7 +171,7 @@
     [self.view addSubview:backgroundImageView];
     
     // Login Button
-    loginButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
     CGFloat xLoginButtonOffset = self.view.center.x - (318/2);
     CGFloat yLoginButtonOffset = self.view.bounds.size.height - (58 + 13);
     loginButton.frame = CGRectMake(xLoginButtonOffset,yLoginButtonOffset,318,58);
@@ -282,7 +269,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
@@ -367,7 +354,6 @@
                               otherButtonTitles:nil,
                               nil];
     [alertView show];
-    [alertView release];
     [self fbDidLogout];
 }
 

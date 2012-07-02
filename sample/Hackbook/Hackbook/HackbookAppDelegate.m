@@ -47,8 +47,6 @@ static NSString* kAppId = @"210849718975311";
                                                               alpha:1.0]];
     [navController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
     self.navigationController = navController;
-    [rootViewController release];
-    [navController release];
     
     // Initialize Facebook
     facebook = [[Facebook alloc] initWithAppId:kAppId andDelegate:rootViewController];
@@ -83,7 +81,6 @@ static NSString* kAppId = @"210849718975311";
                                   otherButtonTitles:nil,
                                   nil];
         [alertView show];
-        [alertView release];
     } else {
         // Now check that the URL scheme fb[app_id]://authorize is in the .plist and can
         // be opened, doing a simple check without local app id factored in here
@@ -116,7 +113,6 @@ static NSString* kAppId = @"210849718975311";
                                       otherButtonTitles:nil,
                                       nil];
             [alertView show];
-            [alertView release];
         }
     }
     
@@ -139,14 +135,6 @@ static NSString* kAppId = @"210849718975311";
     return [self.facebook handleOpenURL:url];
 }
 
-- (void)dealloc {
-    [_window release];
-    [_navigationController release];
-    [facebook release];
-    [apiData release];
-    [userPermissions release];
-    [super dealloc];
-}
 
 #pragma mark - UIAlertViewDelegate methods
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {

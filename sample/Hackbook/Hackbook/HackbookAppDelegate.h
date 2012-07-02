@@ -24,14 +24,14 @@
     NSMutableDictionary *userPermissions;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic) IBOutlet UIWindow *window;
 
-@property (nonatomic, retain) UINavigationController *navigationController;
+@property (nonatomic) UINavigationController *navigationController;
 
-@property (nonatomic, retain) Facebook *facebook;
+@property (nonatomic) Facebook *facebook;
 
-@property (nonatomic, retain) DataSet *apiData;
+@property (nonatomic) DataSet *apiData;
 
-@property (nonatomic, retain) NSMutableDictionary *userPermissions;
+@property (nonatomic) NSMutableDictionary *userPermissions;
 
 @end

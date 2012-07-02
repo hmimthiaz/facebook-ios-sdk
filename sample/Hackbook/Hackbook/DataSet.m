@@ -70,11 +70,6 @@
 
         [_apiConfigData addObject:authConfigData];
 
-        [authMenu1 release];
-        [authMenu2 release];
-        [authMenu3 release];
-        [authMenuItems release];
-        [authConfigData release];
 
         // Requests
         NSDictionary *requestMenu1 = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -125,13 +120,6 @@
 
         [_apiConfigData addObject:requestConfigData];
 
-        [requestMenu1 release];
-        [requestMenu2 release];
-        [requestMenu3 release];
-        [requestMenu4 release];
-        [requestMenu5 release];
-        [requestMenuItems release];
-        [requestConfigData release];
 
         // News Feed
         NSDictionary *newsMenu1 = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -161,10 +149,6 @@
 
         [_apiConfigData addObject:newsConfigData];
 
-        [newsMenu1 release];
-        [newsMenu2 release];
-        [newsMenuItems release];
-        [newsConfigData release];
 
         // Graph API
         NSDictionary *graphMenu1 = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -223,22 +207,10 @@
 
         [_apiConfigData addObject:graphConfigData];
 
-        [graphMenu1 release];
-        [graphMenu2 release];
-        [graphMenu3 release];
-        [graphMenu4 release];
-        [graphMenu5 release];
-        [graphMenu6 release];
-        [graphMenuItems release];
-        [graphConfigData release];
 
     }
     return self;
 }
 
-- (void)dealloc {
-    [_apiConfigData release];
-    [super dealloc];
-}
 
 @end

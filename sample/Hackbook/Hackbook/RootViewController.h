@@ -39,13 +39,13 @@ UITableViewDelegate>{
     APICallsViewController *pendingApiCallsController;
 }
 
-@property (nonatomic, retain) NSArray *permissions;
-@property (nonatomic, retain) UIImageView *backgroundImageView;
-@property (nonatomic, retain) UITableView *menuTableView;
-@property (nonatomic, retain) NSMutableArray *mainMenuItems;
-@property (nonatomic, retain) UIView *headerView;
-@property (nonatomic, retain) UILabel *nameLabel;
-@property (nonatomic, retain) UIImageView *profilePhotoImageView;
+@property (nonatomic) NSArray *permissions;
+@property (nonatomic) UIImageView *backgroundImageView;
+@property (nonatomic) UITableView *menuTableView;
+@property (nonatomic) NSMutableArray *mainMenuItems;
+@property (nonatomic) UIView *headerView;
+@property (nonatomic) UILabel *nameLabel;
+@property (nonatomic) UIImageView *profilePhotoImageView;
 
 
 @end

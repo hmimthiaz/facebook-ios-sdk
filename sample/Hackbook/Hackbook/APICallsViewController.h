@@ -63,15 +63,15 @@ CLLocationManagerDelegate>{
     UIView *messageView;
 }
 
-@property (nonatomic, retain) UITableView *apiTableView;
-@property (nonatomic, retain) NSMutableArray *apiMenuItems;
-@property (nonatomic, retain) NSString *apiHeader;
-@property (nonatomic, retain) NSMutableArray *savedAPIResult;
-@property (nonatomic, retain) CLLocationManager *locationManager;
-@property (nonatomic, retain) CLLocation *mostRecentLocation;
-@property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
-@property (nonatomic, retain) UILabel *messageLabel;
-@property (nonatomic, retain) UIView *messageView;
+@property (nonatomic) UITableView *apiTableView;
+@property (nonatomic) NSMutableArray *apiMenuItems;
+@property (nonatomic) NSString *apiHeader;
+@property (nonatomic) NSMutableArray *savedAPIResult;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic) CLLocation *mostRecentLocation;
+@property (nonatomic) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic) UILabel *messageLabel;
+@property (nonatomic) UIView *messageView;
 
 - (id)initWithIndex:(NSUInteger)index;
 

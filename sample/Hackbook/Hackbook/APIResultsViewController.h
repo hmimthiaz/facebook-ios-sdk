@@ -27,10 +27,10 @@ UITableViewDelegate>{
     UIView *messageView;
 }
 
-@property (nonatomic, retain) NSMutableArray *myData;
-@property (nonatomic, retain) NSString *myAction;
-@property (nonatomic, retain) UILabel *messageLabel;
-@property (nonatomic, retain) UIView *messageView;
+@property (nonatomic) NSMutableArray *myData;
+@property (nonatomic) NSString *myAction;
+@property (nonatomic) UILabel *messageLabel;
+@property (nonatomic) UIView *messageView;
 
 - (id)initWithTitle:(NSString *)title data:(NSArray *)data action:(NSString *)action;
 
