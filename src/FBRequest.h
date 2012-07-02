@@ -88,6 +88,16 @@ typedef NSUInteger FBRequestState;
 
 - (void) connect;
 
+/**
+ * Json Helper functions
+ */
+
++ (NSString *)getJsonStringFromObject:(id)jsonObject;
+
++ (id)getObjectFromJsonData:(NSData *)jsonData;
+
++ (id)getObjectFromJsonString:(NSString *)jsonString;
+
 @end
 
 ////////////////////////////////////////////////////////////////////////////////

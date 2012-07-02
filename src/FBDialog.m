@@ -18,8 +18,7 @@
 #import "FBDialog.h"
 #import "Facebook.h"
 #import "FBFrictionlessRequestSettings.h"
-#import "JSON.h"
-
+#import "FBRequest.h"
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
 
@@ -303,10 +302,7 @@ params   = _params;
                                               needle:@"frictionless_recipients="];
     if (recipientJson) {
         // if value parses as an array, treat as set of fbids
-        SBJsonParser *parser = [[[SBJsonParser alloc]
-                                 init]
-                                autorelease];
-        id recipients = [parser objectWithString:recipientJson];
+        id recipients = [FBRequest getObjectFromJsonString:recipientJson];
 
         // if we got something usable, copy the ids out and update the cache
         if ([recipients isKindOfClass:[NSArray class]]) { 

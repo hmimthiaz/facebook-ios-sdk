@@ -15,8 +15,6 @@
  */
 
 #import "FBRequest.h"
-#import "JSON.h"
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
 
@@ -65,6 +63,41 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
     return request;
 }
 
+#pragma mark - Json Helper functions
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Json Helper functions
+
++ (NSString *)getJsonStringFromObject:(id)jsonObject{
+    NSError * error = nil;
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:jsonObject options:NSJSONWritingPrettyPrinted error:&error];
+    if (error!=nil) {
+        NSLog(@"JSONSerialization Create Error: %d Description: %@",error.code,error.description);
+        return nil;
+    }
+    NSString * jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return  jsonString;
+}
+
++ (id)getObjectFromJsonData:(NSData *)jsonData{
+    NSError * error = nil;
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                    options:NSJSONReadingAllowFragments | NSJSONReadingMutableContainers
+                                                      error:&error];
+    if (error!=nil) {
+        NSLog(@"JSONSerialization Decode Error: %d Description: %@",error.code,error.description);
+        return nil;
+    }
+    return jsonObject;
+}
+
++ (id)getObjectFromJsonString:(NSString *)jsonString{
+    const char *cstr = [jsonString UTF8String];
+    NSData *data = [NSData dataWithBytes:cstr length:jsonString.length];
+    return [FBRequest getObjectFromJsonData:data];
+}
+
+
+#pragma mark - private
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // private
 
@@ -202,9 +235,7 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
     }
     
     
-    SBJSON *jsonParser = [[SBJSON alloc] init];
-    id result = [jsonParser objectWithString:responseString];
-    [jsonParser release];
+    id result = [FBRequest getObjectFromJsonString:responseString];
 
     if (result == nil) {
         return responseString;
